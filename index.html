@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DreamStay Hotel</title>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  body {
+    background: rgb(249, 249, 249);
+    color: rgb(51, 51, 51);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: linear-gradient(to right, rgb(67, 206, 162), rgb(24, 90, 157));
+    color: white;
+    padding: 16px 32px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  header h1 {
+    font-size: 24px;
+  }
+  nav {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  nav a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  nav a:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  section {
+    padding: 120px 20px 60px;
+    max-width: 900px;
+    margin: auto;
+    scroll-margin-top: 80px;
+  }
+  section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+  }
+
+  #rooms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .room-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 300px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  .room-card:hover {
+    transform: translateY(-5px);
+  }
+  .room-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .room-card h3 {
+    font-size: 19.2px;
+    margin-bottom: 8px;
+  }
+  .room-card p {
+    margin-bottom: 6px;
+  }
+  .room-card button {
+    background: linear-gradient(to right, rgb(67, 206, 162), rgb(24, 90, 157));
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  form {
+    max-width: 400px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  form input, form select {
+    padding: 10px;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 5px;
+  }
+  form button {
+    background: linear-gradient(to right, rgb(67, 206, 162), rgb(24, 90, 157));
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  #bookingList {
+    max-width: 600px;
+    margin: auto;
+    list-style: none;
+    padding: 0;
+  }
+  #bookingList li {
+    background: white;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    box-shadow: 1px 1px 6px rgba(0,0,0,0.1);
+  }
+
+  #about {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    color: rgb(51, 51, 51);
+    font-family: Arial, sans-serif;
+  }
+
+  #about h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+    color: rgb(44, 62, 80);
+  }
+
+  .about-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 20px;
+  }
+
+  .about-item img {
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    flex-shrink: 0;
+  }
+
+  .about-item p {
+    font-size: 17.6px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      justify-content: center;
+      gap: 10px;
+    }
+    #rooms {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🌴 DreamStay Hotel</h1>
+  <h3>Find your perfect room in seconds</h3>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#register">Register</a>
+    <a href="#login">Login</a>
+    <a href="#booking">Book Room</a>
+    <a href="#history">My Bookings</a>
+    <a href="#about">About Us</a>
+  </nav>
+</header>
+
+<section id="home">
+  <h2>Available Rooms</h2>
+  <div id="rooms">
+    <div class="room-card">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&h=250&q=80" alt="Deluxe Room" />
+      <h3>Deluxe Room</h3>
+      <p>₹1500 / night</p>
+      <p>Amenities: Wi-Fi, TV, AC</p>
+      <button onclick="fillBookingForm('Deluxe Room', 1500)">Book Now</button>
+    </div>
+
+    <div class="room-card">
+      <img src="https://images.unsplash.com/photo-1709755386664-573b8d9e9a38?w=600&auto=format&fit=crop&q=60" alt="Suite" />
+      <h3>Suite</h3>
+      <p>₹2500 / night</p>
+      <p>Amenities: Wi-Fi, TV, Mini Bar</p>
+      <button onclick="fillBookingForm('Suite', 2500)">Book Now</button>
+    </div>
+
+    <div class="room-card">
+      <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=400&h=250&q=80" alt="Standard Room" />
+      <h3>Standard Room</h3>
+      <p>₹1000 / night</p>
+      <p>Amenities: Wi-Fi, TV</p>
+      <button onclick="fillBookingForm('Standard Room', 1000)">Book Now</button>
+    </div>
+
+    <div class="room-card">
+      <img src="https://images.unsplash.com/photo-1611048268249-7e0d5eb808a2?q=80&w=2072&auto=format&fit=crop" alt="Family Room" />
+      <h3>Family Room</h3>
+      <p>₹3000 / night</p>
+      <p>Amenities: Wi-Fi, TV, Kitchenette</p>
+      <button onclick="fillBookingForm('Family Room', 3000)">Book Now</button>
+    </div>
+  </div>
+</section>
+
+<section id="register">
+  <h2>Register</h2>
+  <form onsubmit="alert('Registered successfully!'); return false;">
+    <input type="text" placeholder="Username" required />
+    <input type="email" placeholder="Email" required />
+    <input type="password" placeholder="Password" required />
+    <button type="submit">Register</button>
+  </form>
+</section>
+
+<section id="login">
+  <h2>Login</h2>
+  <form onsubmit="alert('Login successful!'); return false;">
+    <input type="text" placeholder="Username" required />
+    <input type="password" placeholder="Password" required />
+    <button type="submit">Login</button>
+  </form>
+</section>
+
+<section id="booking">
+  <h2>Book a Room</h2>
+  <form id="bookingForm" onsubmit="saveBooking(); return false;">
+    <input type="text" id="broom" placeholder="Room Type" readonly style="background: rgb(238, 238, 238); cursor: not-allowed;" />
+    <input type="text" id="bname" placeholder="Full Name" required />
+    <label>Check-in:</label><input type="date" id="bcheckin" required />
+    <label>Check-out:</label><input type="date" id="bcheckout" required />
+    <input type="number" id="bguests" placeholder="Number of Guests" min="1" required />
+    <button type="submit">Confirm Booking</button>
+  </form>
+</section>
+
+<section id="history">
+  <h2>📋 My Bookings</h2>
+  <ul id="bookingList"></ul>
+</section>
+
+<section id="about">
+  <h2>About Us</h2>
+  <div class="about-item">
+     <img src="https://media.istockphoto.com/id/146765403/photo/a-luxurious-florida-beach-hotel-during-sunrise.webp?a=1&b=1&s=612x612&w=0&k=20&c=dQ7RaR3U9eevzCS08Hs45oToRAtrJT4wI69QZ06L0W0=" alt="Hotel Exterior" />
+    <p>Welcome to <strong>DreamStay Hotel</strong>, where comfort meets elegance. We provide world-class hospitality, cozy and stylish rooms, and modern amenities to make your stay unforgettable.</p>
+  </div>
+
+  <div class="about-item">
+    <img src="https://images.unsplash.com/photo-1546695478-21f1b1beab95?q=80&w=1931&auto=format&fit=crop" alt="City View" />
+    <p>Located in the heart of the city, DreamStay offers easy access to attractions, dining, and entertainment. Our dedicated staff ensures a relaxing experience.</p>
+  </div>
+
+  <div class="about-item">
+    <img src="https://images.unsplash.com/photo-1596701062351-8c2c14d1fdd0?w=600&auto=format&fit=crop" alt="Room Service" />
+    <p>From free Wi-Fi and premium room services to personalized offers, we strive to create a home away from home for every guest. Your comfort is our top priority.</p>
+  </div>
+</section>
+
+<script>
+  const sessionBookings = [];
+
+  function fillBookingForm(roomName, price) {
+    document.getElementById('broom').value = roomName;
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function saveBooking() {
+    const room = document.getElementById('broom').value;
+    const name = document.getElementById('bname').value.trim();
+    const checkin = document.getElementById('bcheckin').value;
+    const checkout = document.getElementById('bcheckout').value;
+    const guests = parseInt(document.getElementById('bguests').value);
+
+    if (!room) {
+      alert('Please select a room by clicking Book Now.');
+      return;
+    }
+    if (new Date(checkout) <= new Date(checkin)) {
+      alert('Check-out date must be after check-in date.');
+      return;
+    }
+    if (guests < 1) {
+      alert('Number of guests must be at least 1.');
+      return;
+    }
+
+    const newBooking = { room, name, checkin, checkout, guests };
+    sessionBookings.push(newBooking);
+
+    alert('Booking successful!');
+    document.getElementById('bookingForm').reset();
+    document.getElementById('broom').value = '';
+    displayBookings();
+  }
+
+  function displayBookings() {
+    const bookingList = document.getElementById('bookingList');
+    bookingList.innerHTML = '';
+
+    if (sessionBookings.length === 0) {
+      bookingList.innerHTML = '<li>No bookings yet.</li>';
+      return;
+    }
+
+    sessionBookings.forEach(b => {
+      const li = document.createElement('li');
+      li.textContent = `${b.room} — ${b.name} (${b.guests} guest${b.guests > 1 ? 's' : ''}) from ${b.checkin} to ${b.checkout}`;
+      bookingList.appendChild(li);
+    });
+  }
+
+  window.onload = displayBookings;
+</script>
+
+</body>
+</html>
